@@ -3,11 +3,12 @@
 #include <R.h>
 #include <Rinternals.h>
 #include <R_ext/Rdynload.h>
-
+#include "topotoolbox.h"
 #include "topotoolboxr.h"
 
 static const R_CMethodDef cMethods[] = {
    {"wrap_has_topotoolbox", (DL_FUNC) &wrap_has_topotoolbox, 1},
+   {"wrap_gradient8",(DL_FUNC) &gradient8,5},
    {NULL,NULL,0,NULL},
 };
 
