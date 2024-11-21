@@ -6,6 +6,26 @@
 \usage{
 wrap_gradient8(output, dem, cellsize, use_mp, dims)
 }
+\arguments{
+\item{output}{A matrix where the output will be saved}
+
+\item{dem}{A matrix/vector that contains the hight data}
+
+\item{cellsize}{I dont know how to describe this one}
+
+\item{use_mp}{Future feature that will allow to parallelize the code}
+
+\item{dims}{Contains an array of the dem dimensions}
+}
+\value{
+An array
+}
 \description{
 This will make the Gradient8 funktion available to R from the libtotopotoolbox subdirectory
+}
+\examples{
+output<-c(0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0)
+input<-c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+wrap_gradient8(output,input,1,0,c(5,5))
+
 }

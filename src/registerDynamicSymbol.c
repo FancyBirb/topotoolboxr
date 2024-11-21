@@ -5,11 +5,11 @@
 #include <R_ext/Rdynload.h>
 #include "topotoolbox.h"
 #include "topotoolboxr.h"
-#include "floatTest.h"
+#include "wrap_gradient8.h"
 
 static const R_CMethodDef cMethods[] = {
    {"wrap_has_topotoolbox", (DL_FUNC) &wrap_has_topotoolbox, 1},
-   {"wrap_gradient8",(DL_FUNC) &wrap_gradient8,4},
+   {"wrap_gradient8",(DL_FUNC) &wrap_gradient8,5},
    {NULL,NULL,0,NULL},
 };
 
