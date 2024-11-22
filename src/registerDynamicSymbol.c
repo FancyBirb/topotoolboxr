@@ -6,10 +6,12 @@
 #include "topotoolbox.h"
 #include "topotoolboxr.h"
 #include "wrap_gradient8.h"
+#include "wrap_fillsink.h"
 
 static const R_CMethodDef cMethods[] = {
    {"wrap_has_topotoolbox", (DL_FUNC) &wrap_has_topotoolbox, 1},
    {"wrap_gradient8",(DL_FUNC) &wrap_gradient8,5},
+   {"wrap_fillsink",(DL_FUNC) &wrap_fillsink,3},
    {NULL,NULL,0,NULL},
 };
 
