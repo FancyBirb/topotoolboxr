@@ -1,14 +1,11 @@
 #include <stddef.h>
-#include <stdio.h>
 #include <stdint.h>
+
 #include "topotoolbox.h"
 
-#if defined(_OPENMP)
-#include <omp.h>
-#endif
-
-//    This is a working version to run gradient8
+#include "topotoolboxr.h"//    This is a working version to run gradient8
 //
+
 void wrap_gradient8(float *outputR, float *demR, float *cellsizeR,int *use_mpR, ptrdiff_t *dimsR){ //might be usefull to not ask for a ptrdiff_t in the first place
                                  //and let the user input a long array
    
