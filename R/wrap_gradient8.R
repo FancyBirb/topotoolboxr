@@ -15,14 +15,11 @@
 #' @return An array
 #' @export
 
-wrap_gradient8 <- function(output,dem,cellsize,use_mp,dims) {
+wrap_gradient8 <- function(dem,use_mp=0) {
     
-    # check if output and dem are the same size
-    condition <- (length(output)!=length(dem))
-    if (condition[1]){
-        stop("output and dem are not the same length or dimension")
-    }
-    result <- .C("wrap_gradient8",outputR=as.single(output),as.single(dem),as.single(cellsize),as.integer(use_mp), as.integer(dims))$outputR
+    d <- get_grid_data(dem) # Extract input data
+    output <- single(length(d$z))
+    result <- .C("wrap_gradient8",outputR=as.single(output),as.single(d$z),as.single(d$cellsize),as.integer(use_mp), as.integer(d$dims))$outputR
     
     return(result)
 }
