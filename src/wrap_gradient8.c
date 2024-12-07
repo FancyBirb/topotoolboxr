@@ -1,20 +1,20 @@
 #include <stddef.h>
 #include <stdint.h>
+#include <stdio.h>
 
 #include "topotoolbox.h"
 
 #include "topotoolboxr.h"//    This is a working version to run gradient8
 //
 
-void wrap_gradient8(float *outputR, float *demR, float *cellsizeR,int *use_mpR, ptrdiff_t *dimsR){ //might be usefull to not ask for a ptrdiff_t in the first place
+void wrap_gradient8(float *outputR, float *demR, float *cellsizeR,int *use_mpR, int *dimsR){ //might be usefull to not ask for a ptrdiff_t in the first place
                                  //and let the user input a long array
    
    // printf will be cleared in the future
-   int *pdims = dimsR;
-   printf("pdims adress: %td; and pdims content: %td\n",pdims, *(pdims));
+   printf("pdims adress: %d; and pdims content: %d\n",dimsR, *(dimsR));
 
    // Uneccessary compicated
-   ptrdiff_t dims [2]= {(long)*(pdims),(long)*(pdims+1)};
+   ptrdiff_t dims [2]= {dimsR[0], dimsR[1]};
    printf("dims adress: %td; and dims content: %td\n",dims, (dims[0]));
 
    float cellsize = *cellsizeR;
