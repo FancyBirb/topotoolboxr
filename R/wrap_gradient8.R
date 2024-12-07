@@ -18,8 +18,11 @@
 wrap_gradient8 <- function(dem,use_mp=0) {
     
     d <- get_grid_data(dem) # Extract input data
-    output <- single(length(d$z))
+    output <- single(length(d$z)) #create output array
     result <- .C("wrap_gradient8",outputR=as.single(output),as.single(d$z),as.single(d$cellsize),as.integer(use_mp), as.integer(d$dims))$outputR
+
+    G <- dem # copy Spatrast
+    values(G) <- result #update Spatrast values
     
-    return(result)
+    return(G)
 }
