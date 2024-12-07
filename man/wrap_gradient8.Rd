@@ -4,28 +4,16 @@
 \alias{wrap_gradient8}
 \title{wrap_gradient8}
 \usage{
-wrap_gradient8(output, dem, cellsize, use_mp, dims)
+wrap_gradient8(dem, use_mp = 0)
 }
 \arguments{
-\item{output}{A matrix where the output will be saved}
-
-\item{dem}{A matrix/vector that contains the hight data}
-
-\item{cellsize}{I dont know how to describe this one}
+\item{dem}{Input of type Spatrast from Terra}
 
 \item{use_mp}{Future feature that will allow to parallelize the code}
-
-\item{dims}{Contains an array of the dem dimensions}
 }
 \value{
-An array
+A Spatrast
 }
 \description{
 This will make the Gradient8 funktion available to R from the libtotopotoolbox subdirectory
-}
-\examples{
-input<-c(0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0)
-output<-c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-wrap_gradient8(output,input,1,0,c(5,5))
-
 }

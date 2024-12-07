@@ -2,17 +2,10 @@
 #'
 #' This will make the Gradient8 funktion available to R from the libtotopotoolbox subdirectory
 #' 
-#' @param output A matrix where the output will be saved
-#' @param dem A matrix/vector that contains the hight data
-#' @param cellsize I dont know how to describe this one
+#' @param dem Input of type Spatrast from Terra
 #' @param use_mp Future feature that will allow to parallelize the code
-#' @param dims Contains an array of the dem dimensions
-#' @examples
-#' input<-c(0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0)
-#' output<-c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-#' wrap_gradient8(output,input,1,0,c(5,5))
 #'
-#' @return An array
+#' @return A Spatrast
 #' @export
 
 wrap_gradient8 <- function(dem,use_mp=0) {
