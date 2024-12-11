@@ -5,10 +5,12 @@
 #' @param dem Input of type Spatrast from Terra
 #' @param use_mp Future feature that will allow to parallelize the code
 #'
+#' @import terra
+#'
 #' @return A Spatrast
 #' @export
 
-wrap_gradient8 <- function(dem,use_mp=0) {
+gradient8 <- function(dem,use_mp=0) {
     
     d <- get_grid_data(dem) # Extract input data
     output <- single(length(d$z)) #create output array
