@@ -1,6 +1,6 @@
-#include <stdio.h>
 #include <stddef.h>
 #include <stdint.h>
+
 #include "topotoolbox.h"
 
 void wrap_fillsink(float *outputR,float *demR, int *dimsR){
