@@ -4,7 +4,7 @@
 \alias{wrap_fillsink}
 \title{wrap_fillsink}
 \usage{
-wrap_fillsink(tiff)
+wrap_fillsink(tiff, bc)
 }
 \arguments{
 \item{tiff}{Takes a Spatrast as input}

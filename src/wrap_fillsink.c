@@ -3,9 +3,10 @@
 
 #include "topotoolbox.h"
 
-void wrap_fillsink(float *outputR,float *demR, int *dimsR){
-   float * output = outputR;
-   float * dem = demR;
-   ptrdiff_t dims [2]={*dimsR,*(dimsR+1)};
-   //fillsinks(output,dem,dims);
+#include "topotoolboxr.h"
+
+void wrap_fillsink(float *output, float *dem, int *bcR, int *dimsR){
+   
+   ptrdiff_t dims [2]= {dimsR[0], dimsR[1]};
+   fillsinks(output,dem,(uint8_t*)bcR,dims);
 }

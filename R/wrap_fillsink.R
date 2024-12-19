@@ -7,15 +7,12 @@
 #' @return An array
 #' @export
 
-wrap_fillsink <- function(tiff) {
+wrap_fillsink <- function(dem,bc) {
     
-    dims <- dim(tiff)
-    # check if output and dem are the same size
-    condition <- (length(output)!=length(dem))
-    if (condition[1]){
-        stop("output and dem are not the same length or dimension")
-    }
-    result <- .C("wrap_fillsink",outputR=as.single(matrix(0,dims[1],dims[2])),as.single(values(tiff)),as.integer(dims))$outputR
+    
+    d <- get_grid_data(dem) # Extract input data
+    output <- single(length(d$z)) #create output array
+    result <- .C("wrap_fillsink",outputR=as.single(output),as.single(d$z),as.single(bc),as.integer(d$dims))$outputR
     
     return(result)
 }
