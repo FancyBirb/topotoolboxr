@@ -2,17 +2,30 @@
 #'
 #' This will make the fillsinks funktion available to R from the libtotopotoolbox subdirectory
 #' 
-#' @param tiff Takes a Spatrast as input 
+#' @param dem Takes a Spatrast as input 
+#' @param bc Array of the same size as the input matrix
 #'
-#' @return An array
+#' @return A Spatrast
 #' @export
 
-wrap_fillsink <- function(dem,bc) {
+fillsink <- function(dem,bc=NULL) {
     
-    
+    # if user didn't set bc, then set it manual
+    if (is.null(bc))
+    {
+        bc <- matrix(0,dim(dem)[1],dim(dem)[2],byrow=TRUE)
+        bc[terra::values(dem)=="NaN"] <- 1
+        bc[1,] <- 1
+        bc[,1] <- 1
+        # set last row to 1
+        bc[nrow(bc),] <- 1
+        # set last col to 1
+        bc[,ncol(bc)] <- 1
+    }
+
     d <- get_grid_data(dem) # Extract input data
     output <- single(length(d$z)) #create output array
-    result <- .C("wrap_fillsink",outputR=as.single(output),as.single(d$z),as.integer(bc),as.integer(d$dims))$outputR
+    #result <- .C("wrap_fillsink",outputR=as.single(output),as.single(d$z),as.integer(bc),as.integer(d$dims))$outputR
     
-    return(result)
+    return(bc)
 }
