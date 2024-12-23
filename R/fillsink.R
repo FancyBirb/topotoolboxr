@@ -25,7 +25,10 @@ fillsink <- function(dem,bc=NULL) {
 
     d <- get_grid_data(dem) # Extract input data
     output <- single(length(d$z)) #create output array
+    fill_value = min(d$z, na.rm=TRUE) - 999
+    nans = is.na(d$z)
+    d$z[nans] = fill_value
     result <- .C("wrap_fillsink",outputR=as.single(output),as.single(d$z),as.integer(bc),as.integer(d$dims))$outputR
-    
+    d$z[nans] = NaN
     return(result)
 }
