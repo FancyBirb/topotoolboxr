@@ -13,7 +13,8 @@ fillsink <- function(dem,bc=NULL) {
     # if user didn't set bc, then set it manual
     if (is.null(bc))
     {
-        bc <- matrix(0,dim(dem)[1],dim(dem)[2],byrow=TRUE)
+        print("ich bin da")
+        bc <- matrix(0,dim(dem)[1],dim(dem)[2])
         bc[terra::values(dem)=="NaN"] <- 1
         bc[1,] <- 1
         bc[,1] <- 1
@@ -28,6 +29,7 @@ fillsink <- function(dem,bc=NULL) {
     fill_value = min(d$z, na.rm=TRUE) - 999
     nans = is.na(d$z)
     d$z[nans] = fill_value
+    dimension <- c(d$dims[2],d$dims[1])
     result <- .C("wrap_fillsink",outputR=as.single(output),as.single(d$z),as.integer(bc),as.integer(d$dims))$outputR
     d$z[nans] = NaN
     return(result)

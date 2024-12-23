@@ -1,6 +1,6 @@
 #include <stddef.h>
 #include <stdint.h>
-#include <stdlib.h>
+#include <R.h>
 
 #include "topotoolbox.h"
 
@@ -11,7 +11,7 @@ void wrap_fillsink(float *output, float *dem, int *bcR, int *dimsR){
    ptrdiff_t dims [2]= {dimsR[0], dimsR[1]};
 
    // Allocate memory for bc
-   uint8_t *bc = calloc(dims[0] * dims[1],sizeof(uint8_t));
+   uint8_t *bc = R_Calloc(dims[0] * dims[1], uint8_t);
 
    // Fill bc from the int-valued bcR array
    for (ptrdiff_t j = 0; j < dims[1]; j++) {
@@ -23,5 +23,5 @@ void wrap_fillsink(float *output, float *dem, int *bcR, int *dimsR){
    fillsinks(output, dem, bc, dims);
 
    // Free the allocated memory
-   free(bc);
+   R_Free(bc);
 }
